@@ -1,0 +1,13 @@
+# upload-object.yml
+---
+  - hosts: localhost
+    gather_facts: False
+
+    tasks:
+      - name: upload a photo to s3 bucket
+        amazon.aws.aws_s3:
+          bucket: aron-bucket-from-ansible
+          mode: put
+          object: vizsla.jpg
+          src: ../vizsla.jpg
+          permission: public-read

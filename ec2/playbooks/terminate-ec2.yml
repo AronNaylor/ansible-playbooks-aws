@@ -1,0 +1,17 @@
+# terminate-all-ec2.yml
+---
+ - hosts: localhost
+   gather_facts: False
+
+   vars:
+    instances_to_terminate: "{{ passed_in_hosts }}"
+
+
+   tasks:
+    - name: Terminate running ec2's
+      amazon.aws.ec2:
+        region: eu-west-2
+        state: absent
+        instance_ids: "{{ instances_to_terminate }}"
+
+        

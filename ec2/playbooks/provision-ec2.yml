@@ -1,0 +1,25 @@
+# provision-ec2.yml
+---
+  - hosts: localhost
+    gather_facts: False
+
+    tasks:
+      - name: Provision EC2 instance
+        amazon.aws.ec2:
+          key_name: aron-ansible
+          instance_type: t2.nano
+          image: ami-0a669382ea0feb73a
+          count: 5
+          wait: yes
+          state: present
+          group: aron-ansible-sg
+          #vpc_subnet_id: subnet-b42876dd
+          #assign_public_ip: yes
+          region: eu-west-2
+          zone: eu-west-2b
+          instance_tags: {"aron":"aron"}
+          #user_data: |
+          #  #!/bin/bash
+          #  sudo yum update -y
+          #  sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
+          #  sudo yum install -y httpd mariadb-server

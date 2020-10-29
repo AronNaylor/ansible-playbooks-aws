@@ -1,0 +1,5 @@
+plugin: aws_ec2
+regions:
+  - eu-west-2
+filters:
+  instance.group-id: sg-0ff489004198cd87d

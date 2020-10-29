@@ -1,0 +1,12 @@
+# create-bucket.yml
+---
+  - hosts: localhost
+    gather_facts: False
+
+    tasks:
+      - name: Create an empty s3 bucket
+        amazon.aws.aws_s3:
+          bucket: aron-bucket-from-ansible3
+          mode: create
+          permission: public-read
+          region: eu-west-2

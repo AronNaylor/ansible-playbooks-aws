@@ -1,0 +1,4 @@
+# all-playbooks.yml
+---
+  - import_playbook: create-bucket.yml
+  - import_playbook: upload-object.yml

@@ -1,0 +1,6 @@
+# bootstrap-server.yml
+---
+  - import_playbook: yum-update.yml
+  - import_playbook: install-services.yml
+  - import_playbook: upload-index.yml
+  - import_playbook: check-status.yml

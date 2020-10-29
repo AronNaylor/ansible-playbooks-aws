@@ -1,0 +1,21 @@
+# provision-ec2.yml
+---
+  - hosts: localhost
+    gather_facts: False
+
+    vars_files:
+      - ./aws_keys.yml
+
+    tasks:
+      - name: Provision EC2 instance
+        amazon.aws.ec2:
+          aws_access_key: "{{ ec2_access_key }}"
+          aws_secret_key: "{{ ec2_secret_key }}"
+          key_name: aron-ansible
+          instance_type: t2.micro
+          image: ami-004324092615dae37
+          wait: yes
+          group: "aron-ansible-sg"
+          vpc_subnet_id: subnet-b42876dd
+          assign_public_ip: yes
+          region: eu-west-2

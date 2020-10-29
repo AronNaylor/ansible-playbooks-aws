@@ -1,0 +1,16 @@
+# display-ec2-details.yml
+---
+  - hosts: all
+    remote_user: ec2-user
+    become: true
+    become_method: sudo
+    become_user: root
+    gather_facts: False
+
+    tasks:
+      - name: get ips of running instances
+        vars:
+          myVar: |
+            Instance Id: {{ instance_id }} 
+        debug: 
+          msg: "{{ myVar.split('\n') }}"

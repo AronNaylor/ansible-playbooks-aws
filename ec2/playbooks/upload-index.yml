@@ -1,0 +1,14 @@
+# upload-index.yml
+---
+  - hosts: all
+    become: true
+
+    vars:
+      path_to_index: "/var/www/html"
+    
+    tasks:
+      - name: Upload index.html file to root
+        copy:
+          src: ../index.html
+          dest: "{{ path_to_index }}"
+          mode: 0755
